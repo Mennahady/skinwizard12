@@ -27,6 +27,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),  # for OAuth callbacks
     # Social login
     path('auth/social/', include('allauth.socialaccount.urls')),
+    path('api/consultation/', include('consultation.urls')),
   
 
 ]
