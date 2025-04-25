@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # Local apps
     'accounts',
     'consultation',
+    'pharmacy',
 ]
 
 SITE_ID = 1

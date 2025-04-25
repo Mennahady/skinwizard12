@@ -25,6 +25,8 @@ urlpatterns = [
     path('api/auth/registration/', include('dj_rest_auth.registration.urls')),
     path('api/accounts/', include('accounts.urls')),  # your custom endpoints
     path('accounts/', include('allauth.urls')),  # for OAuth callbacks
+    path('api/pharmacy/', include('pharmacy.urls')),
+
     # Social login
     path('auth/social/', include('allauth.socialaccount.urls')),
     path('api/consultation/', include('consultation.urls')),
