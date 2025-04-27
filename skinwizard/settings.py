@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'accounts',
     'consultation',
     'pharmacy',
+    'diagnosis',
+    'patient_form'
 ]
 
 SITE_ID = 1
