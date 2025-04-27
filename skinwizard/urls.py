@@ -26,10 +26,13 @@ urlpatterns = [
     path('api/accounts/', include('accounts.urls')),  # your custom endpoints
     path('accounts/', include('allauth.urls')),  # for OAuth callbacks
     path('api/pharmacy/', include('pharmacy.urls')),
+    path('api/diagnosis/', include('diagnosis.urls')),
+    path('api/patient_form/', include('patient_form.urls')),
+    path('api/consultation/', include('consultation.urls')),
 
     # Social login
     path('auth/social/', include('allauth.socialaccount.urls')),
-    path('api/consultation/', include('consultation.urls')),
+  
   
 
 ]
