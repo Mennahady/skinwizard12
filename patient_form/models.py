@@ -1,5 +1,13 @@
-from django.db import models # type: ignore
-from diagnosis.models import Patient
+from django.db import models
+from django.conf import settings  # Correct way to get User model
+
+class Patient(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 
 class PatientForm(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='forms')
@@ -39,7 +47,6 @@ class PatientForm(models.Model):
     )
     other_conditions = models.TextField(blank=True)
     additional_photo = models.ImageField(upload_to='patient_photos/', blank=True, null=True)
-    #submitted_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"Form for {self.patient.name}"
@@ -58,7 +65,7 @@ class ChatMessage(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='messages')
     message = models.TextField()
     sent_at = models.DateTimeField(auto_now_add=True)
-    is_from_patient = models.BooleanField(default=True)  # True if sent by patient, False if by doctor
+    is_from_patient = models.BooleanField(default=True)
 
     def __str__(self):
         return f"Message from {'patient' if self.is_from_patient else 'doctor'} at {self.sent_at}"

@@ -29,6 +29,8 @@ urlpatterns = [
     path('api/diagnosis/', include('diagnosis.urls')),
     path('api/patient_form/', include('patient_form.urls')),
     path('api/consultation/', include('consultation.urls')),
+    path('api/content/', include('content.urls')),
+
 
     # Social login
     path('auth/social/', include('allauth.socialaccount.urls')),
@@ -37,6 +39,5 @@ urlpatterns = [
 
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
